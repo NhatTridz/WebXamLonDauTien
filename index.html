@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  
+  <style>
+  /**Phần dùng chung**/
+  
+    body {
+      margin: 0;
+      padding: 0;
+      background: #3D8D7A;
+      font-style: none;
+      font-family: none;
+    }
+    .scene {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+    
+    /**Phần login**/
+    
+    #loginBox {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid #FFFACD;
+      border-radius: 20px;
+      height: 25rem;
+      width: 20rem;
+      text-align: center;
+      background: #FFFACD;
+      box-shadow: 
+      0 0 10px black;
+    }
+    #qmkBox {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid #FFFACD;
+      border-radius: 20px;
+      height: 25rem;
+      width: 20rem;
+      text-align: center;
+      background: #FFFACD;
+      box-shadow: 
+      0 0 10px black;
+    }
+    #dkBox {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid #FFFACD;
+      border-radius: 20px;
+      height: 25rem;
+      width: 20rem;
+      text-align: center;
+      background: #FFFACD;
+      box-shadow: 
+      0 0 10px black;
+    }
+    #qmkBox h2 {
+      font-size: 2rem;
+      color: #4D4D4D;
+      transition: 0.5s ease;
+      animation: 2s h2buNho2 ease infinite;
+    }
+    #loginBox h2 {
+      font-size: 2rem;
+      color: #4D4D4D;
+      transition: 0.5s ease;
+      animation: 2s h2buNho1 ease infinite;
+    }
+    #qmkBox h2:hover {
+      color: black;
+    }
+    #loginBox h2:hover {
+      color: black;
+    }
+    @keyframes h2buNho1 {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.1);}
+      100% {transform: scale(1);}
+    }
+    @keyframes h2buNho2 {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.1);}
+      100% {transform: scale(1);}
+    }
+    @keyframes h2buNho3 {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.1);}
+      100% {transform: scale(1);}
+    }
+    #dkBox h2 {
+      font-size: 2rem;
+      color: #4D4D4D;
+      transition: 0.5s ease;
+      animation: 2s h2buNho3 ease infinite;
+    }
+    #dkBox h2:hover {
+      color: black;
+    }
+    #loginBox input {
+      height: 2rem;
+      width: 15rem;
+      border: 1px solid;
+      border-radius: 15px;
+      transition: 0.5s ease;
+      margin-top: 20px;
+      box-shadow: 
+      0 0 3px black;
+    }
+    #loginBox input:hover {
+      box-shadow: 
+      0 0 10px black;
+    }
+    #qmkBox input {
+      height: 2rem;
+      width: 15rem;
+      border: 1px solid;
+      border-radius: 15px;
+      transition: 0.5s ease;
+      margin-top: 20px;
+      box-shadow: 
+      0 0 3px black;
+    }
+    #qmkBox input:hover {
+      box-shadow: 
+      0 0 10px black;
+    }
+    #dkBox input {
+      height: 2rem;
+      width: 15rem;
+      border: 1px solid;
+      border-radius: 15px;
+      transition: 0.5s ease;
+      margin-top: 20px;
+      box-shadow: 
+      0 0 3px black;
+    }
+    #dkBox input:hover {
+      box-shadow: 
+      0 0 10px black;
+    }
+    #loginBox #chuTen {
+      position: absolute;
+      top: 18%;
+      left: 5%;
+      transition: 0.5s ease;
+    }
+    #qmkBox #chuTenMkm {
+      position: absolute;
+      top: 18%;
+      left: 5%;
+      transition: 0.5s ease;
+    }
+    #dkBox #chuTenDk {
+      position: absolute;
+      top: 18%;
+      left: 5%;
+      transition: 0.5s ease;
+    }
+    #loginBox input:hover + #chuTen {
+      position: absolute;
+      left: 60%;
+      color: #7C1B1B;
+    }
+    #qmkBox input:hover + #chuTenMkm {
+      position: absolute;
+      left: 55%;
+      color: #7C1B1B;
+    }
+    #dkBox input:hover + #chuTenDk {
+      position: absolute;
+      left: 60%;
+      color: #7C1B1B;
+    }
+    #loginBox #chuMk {
+      position: absolute;
+      top: 33%;
+      left: 5%;
+      transition: 0.5s ease;
+    }
+    #qmkBox #chuMkm {
+      position: absolute;
+      top: 33%;
+      left: 5%;
+      transition: 0.5s ease;
+    }
+    #dkBox #chuMkDk {
+      position: absolute;
+      top: 33%;
+      left: 5%;
+      transition: 0.5s ease;
+    }
+    #loginBox input:hover + #chuMk {
+      position: absolute;
+      left: 45%;
+      color: #7C1B1B;
+    }
+    #qmkBox input:hover + #chuMkm {
+      position: absolute;
+      left: 45%;
+      color: #7C1B1B;
+    }
+    #dkBox input:hover + #chuMkDk {
+      position: absolute;
+      left: 45%;
+      color: #7C1B1B;
+    }
+    #loginBox #chuXnMk {
+      position: absolute;
+      top: 47%;
+      left: 5%;
+      transition: 0.5s ease;
+    }
+    #qmkBox #chuXnMkm {
+      position: absolute;
+      top: 47%;
+      left: 5%;
+      transition: 0.5s ease;
+    }
+    #dkBox #chuXnMkDk {
+      position: absolute;
+      top: 47%;
+      left: 5%;
+      transition: 0.5s ease;
+    }
+    #loginBox input:hover + #chuXnMk {
+      position: absolute;
+      left: 50%;
+      color: #7C1B1B;
+    }
+    #qmkBox input:hover + #chuXnMkm {
+      position: absolute;
+      left: 45%;
+      color: #7C1B1B;
+    }
+    #dkBox input:hover + #chuXnMkDk {
+      position: absolute;
+      left: 45%;
+      color: #7C1B1B;
+    }
+    #loginBox #nutXn1 {
+      height: 2rem;
+      width: 6rem;
+      margin: 10px;
+      border: 1px solid #FFF177;
+      border-radius: 10px;
+      background: #FFF177;
+      box-shadow: 
+      0 0 15px #FFF177;
+      transition: 0.5s ease;
+    }
+    #loginBox #nutXn1:hover {
+      transform: scale(1.2);
+      background: #FFF066;
+      color: #7C1B1B;
+    }
+    #loginBox #nutQmk {
+      height: 1.4rem;
+      width: 6rem;
+      font-size: 0.7rem;
+      margin: 10px 0;
+      border: 1px solid #FFF496;
+      border-radius: 7px;
+      background: #FFF496;
+      transition: 0.5s ease;
+    }
+    #loginBox #nutQmk:hover {
+      transform: scale(1.2);
+      background: #FFF066;
+      box-shadow: 
+      0 0 15px #FFF177;
+      color: #7C1B1B;
+    }
+    #loginBox #nutDk {
+      height: 1.7rem;
+      width: 8rem;
+      font-size: 0.7rem;
+      border: 1px solid #FFF6A3;
+      border-radius: 10px;
+      background: #FFF6A3;
+      transition: 0.5s ease;
+    }
+    #loginBox #nutDk:hover {
+      transform: scale(1.2);
+      background: #FFF066;
+      box-shadow: 
+      0 0 15px #FFF177;
+      color: #7C1B1B;
+    }
+    #qmkBox #nutXn2 {
+      height: 2rem;
+      width: 6rem;
+      border: 1px solid  #FFF177;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      background:  #FFF177;
+      box-shadow: 
+      0 0 15px #FFF177;
+      transition: 0.5s ease;
+    }
+    #qmkBox #nutXn2:hover {
+      transform: scale(1.2);
+      background: #FFF066;
+      color: #7C1B1B;
+    }
+    #qmkBox #nutQl1 {
+      height: 1.7rem;
+      width: 5rem;
+      border: 1px solid #FFF496;
+      border-radius: 10px;
+      background:  #FFF496;
+      box-shadow: 
+      0 0 15px #FFF177;
+      margin-top: 10px;
+      transition: 0.5s ease;
+    }
+    #qmkBox #nutQl1:hover {
+      transform: scale(1.2);
+      background: #FFF066;
+      color: #7C1B1B;
+    }
+    #qmkBox #nn1 {
+      color: #FFE074C4;
+    }
+    #dkBox #nutXn3 {
+      height: 2rem;
+      width: 6rem;
+      border: 1px solid  #FFF177;
+      border-radius: 10px;
+      margin: 10px 0;
+      background:  #FFF177;
+      box-shadow: 
+      0 0 15px #FFF177;
+      transition: 0.5s ease;
+    }
+    #dkBox #nutXn3:hover {
+      transform: scale(1.2);
+      background: #FFF066;
+      color: #7C1B1B;
+    }
+    #dkBox #nutQl2 {
+      height: 1.7rem;
+      width: 5rem;
+      border: 1px solid #FFF496;
+      border-radius: 10px;
+      margin-top: 20px;
+      background:  #FFF496;
+      box-shadow: 
+      0 0 15px #FFF177;
+      transition: 0.5s ease;
+    }
+    #dkBox #nutQl2:hover {
+      transform: scale(1.2);
+      background: #FFF066;
+      color: #7C1B1B;
+    }
+    
+    /**Phần chuyển cảnh phụ**/
+    
+    #phu #nutPhu {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 100rem;
+      width: 100%;
+      font-size: 3rem;
+      background: #FFFACD;
+      color: #7C1B1B;
+    }
+    
+    /**Phần menu chính**/
+    
+    #menu nav {
+      border: 1px solid #06D6A0;
+      text-align: center;
+      height: 4rem;
+      background: #06D6A0;
+    }
+    
+    #menu #ten {
+      font-size: 1.2rem;
+      text-align: right;
+      margin-right: 20px;
+      color: black;
+    }
+    #menu p {
+      margin: 0 50px 10px 10px;
+      font-size: 1.2rem;
+      color: black;
+    }
+    #menu main {
+      margin-bottom: 100px;
+      color: black;
+    }
+    #menu #chuTrongMenu {
+      border: 2px solid #D6DBC8;
+      border-radius: 20px;
+      margin: 5px;
+      background: #D6DBC8;
+      box-shadow: 
+      0 0 20px #D6DBC8;
+      transition: 0.7s ease;
+    }
+    #menu #chuTrongMenuMenu {
+      transition: 0.7s ease;
+    }
+    #menu #chuTrongMenuMenu:hover {
+      color: white;
+    }
+    #menu #chuTrongMenu:hover {
+      background: #57EBC5;
+      color: black;
+      box-shadow: 
+      0 0 15px #57EBC5;
+      border: 1px solid #57EBC5;
+    }
+    #menu #chu1 {
+      animation: chu1mo 6s ease 1s;
+      transition: 0.5s ease;
+    }
+    #menu #chu1:hover {
+      color: #00C491;
+    }
+    @keyframes chu1mo {
+      0% {transform: translateX(0); opacity: 1;}
+      50% {transform: translateX(-200px); opacity: 0;}
+      100% {transform: translateX(0); opacity: 1;}
+    }
+    #menu #chu2 {
+      position: absolute;
+      top: 13%;
+      opacity: 0;
+      animation: chu2mo 4s ease 2s forwards;
+    }
+    @keyframes chu2mo {
+      0% {transform: translateX(400px); opacity: 0;}
+      50% {transform: translateX(0); opacity: 1;}
+      75% {transform: translateX(200px); opacity: 0;}
+      100% {transform: translateX(0); opacity: 0;}
+    }
+    #menu footer {
+      background: #03A67C;
+      border: 1px solid #03A67C;
+      height: 10rem;
+      margin-top: 210px;
+    }
+    #dkHocBox nav {
+      border: 1px solid #06D6A0;
+      text-align: center;
+      height: 4rem;
+      background: #06D6A0;
+    }
+    #dkHocBox {
+      text-align: center;
+    }
+    #dkHocBox h1 {
+      color: black;
+      transition: 0.5s ease;
+      opacity: 0;
+      animation: h1modi 1.5s ease 0.25s forwards;
+    }
+    @keyframes h1modi {
+      from {transform: translateY(15px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+    #dkHocBox h1:hover {
+      color: gray;
+    }
+    #dkHocBox #soXubox {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #6D6D6D;
+      transition: 0.5s ease;
+    }
+    #dkHocBox #soXubox:hover {
+      transform: scale(1.2);
+      color: #434343;
+    }
+    #dkHocBox .nut2 {
+      height: 3rem;
+      width: 8rem;
+      margin-top: 20px;
+      border: 1px solid;
+      border-radius: 10px;
+    }
+    #dkHocBox #nutHTML {
+      background: #00C894;
+      opacity: 0;
+      box-shadow: 
+      0 0 5px black;
+      border: 1px solid #00C894;
+      transition: 0.5s ease;
+      animation: nutHTMLdi 1s ease 0.1s forwards;
+    }
+    @keyframes nutHTMLdi {
+      from {transform: translateX(50px); opacity: 0;}
+      to {transform: translateX(0); opacity: 1;}
+    }
+    #dkHocBox #nutHTML:hover {
+      transform: scale(1.2);
+      background: #06D6A0;
+      box-shadow: 
+      0 0 15px #4AFFD1;
+      color: white;
+      border: 1px solid #06D6A0;
+    }
+    #dkHocBox #nutCSS {
+      background: #00C894;
+      box-shadow: 
+      0 0 5px black;
+      border: 1px solid #00C894;
+      transition: 0.5s ease;
+      opacity: 0;
+      animation: nutCSSdi 1s ease 0.25s forwards;
+    }
+    @keyframes nutCSSdi {
+      from {transform: translateX(-50px); opacity: 0;}
+      to {transform: translateX(0); opacity: 1;}
+    }
+    #dkHocBox #nutCSS:hover {
+      transform: scale(1.2);
+      box-shadow: 
+      0 0 15px #4AFFD1;
+      background: #06D6A0;
+      color: white;
+      border: 1px solid #06D6A0;
+    }
+    #dkHocBox #nutJS {
+      background: #00C894;
+      box-shadow: 
+      0 0 5px black;
+      border: 1px solid #00C894;
+      transition: 0.5s ease;
+      opacity: 0;
+      animation: nutJSdi 1s ease 0.75s forwards;
+    }
+    @keyframes nutJSdi {
+      from {transform: translateX(50px); opacity: 0;}
+      to {transform: translateX(0); opacity: 1;}
+    }
+    #dkHocBox #nutJS:hover {
+      transform: scale(1.2);
+      box-shadow: 
+      0 0 15px #4AFFD1;
+      background: #06D6A0;
+      color: white;
+      border: 1px solid #06D6A0;
+    }
+    #dkHocBox p {
+      font-size: 1.1rem;
+      color: #434343;
+    }
+    #dkHocBox #luilai {
+      margin-top: 100px;
+      border: 1px solid #03A67C;
+      background: #03A67C;
+    }
+    #dkHocBox input {
+      height: 2rem;
+      border: 1px solid floralwhite;
+      border-radius: 10px;
+      background: floralwhite;
+      box-shadow: 
+      0 0 5px black;
+      color: black;
+      transition: 0.5s ease;
+    }
+    #dkHocBox input:hover {
+      background: darkgrey;
+      transform: scale(1.2);
+      color: white;
+      border: #53616B;
+      box-shadow: 
+      0 0 15px #4AFFD1;
+    }
+    #dkHocBox #nutGuiEmail {
+      height: 2rem;
+      width: 5rem;
+      margin-top: 15px;
+      background: white;
+      border: 1px solid white;
+      border-radius: 10px;
+      color: black;
+      transition: 0.5s ease;
+    }
+    #dkHocBox #nutGuiEmail:hover {
+      transform: scale(1.2);
+      background: #778792;
+      color: white;
+      border: 1px solid #778792;
+    } 
+    #dkHocBox #chuEmail {
+      color: #00FFBD;
+    }
+    #muaXuBox nav {
+      border: 1px solid #06D6A0;
+      text-align: center;
+      height: 4rem;
+      background: #06D6A0;
+    }
+    #muaXuBox div {
+      height: 7rem;
+      width: 10rem;
+      border: 1px solid #03A67C;
+      line-height: 7rem;
+      margin: 10px 0 0 100px;
+      border-radius: 10px;
+      background: #03A67C;
+      box-shadow: 
+      0 0 10px #0B9A76;
+      transition: 0.5s ease;
+      font-size: 2rem;
+      opacity: 0;
+    }
+    #muaXuBox div:hover {
+      transform: scale(1.1);
+      background: #06D6A0;
+      box-shadow: 
+       0 0 15px #4AFFD1;
+      border: 1px solid #06D6A0;
+      color: white;
+      
+    }
+    #muaXuBox {
+      text-align: center;
+    }
+    #muaXuBox h2 {
+      color: #1DDBAA;
+      transition: 0.5s ease;
+    }
+    #muaXuBox h2:hover {
+      transform: scale(1.1);
+      color: black;
+    }
+    #muaXuBox .nut3 {
+      height: 2rem;
+      width: 5rem;
+      margin: 10px 0;
+      border: 1px solid #C1C4B8;
+      border-radius: 10px;
+      background: #C1C4B8;
+      opacity: 0;
+      transition: 0.5s ease;
+      animation: nut3modi 1.5s ease 0.5s forwards;
+    }
+    @keyframes nut3modi {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    #muaXuBox .nut3:hover {
+      transform: scale(1.2);
+      background: #EBF0DF;
+      border: 1px solid #EBF0DF;
+    }
+    #muaXuBox #goi1 {
+      animation: goi1di 1s ease forwards;
+    }
+    @keyframes goi1di {
+      0% {transform: translateX(50px); opacity: 0;}
+      50% {transform: translateX(-50px); opacity: 1;}
+      100% {transform: translateX(0); opacity: 1;}
+    }
+    #muaXuBox #goi2 {
+      animation: goi2di 1s ease 0.2s forwards;
+    }
+    @keyframes goi2di {
+      0% {transform: translateX(50px); opacity: 0;}
+      50% {transform: translateX(-50px); opacity: 1;}
+      100% {transform: translateX(0); opacity: 1;}
+    }
+    #muaXuBox #goi3 {
+      animation: goi3di 1s ease 0.4s forwards;
+    }
+    @keyframes goi3di {
+      0% {transform: translateX(50px); opacity: 0;}
+      50% {transform: translateX(-50px); opacity: 1;}
+      100% {transform: translateX(0); opacity: 1;}
+    }
+    #muaXuBox #goi4 {
+      animation: goi4di 1s ease 0.6s forwards;
+    }
+    @keyframes goi4di {
+      0% {transform: translateX(50px); opacity: 0;}
+      50% {transform: translateX(-50px); opacity: 1;}
+      100% {transform: translateX(0); opacity: 1;}
+    }
+    #muaXuBox #goi5 {
+      animation: goi5di 1s ease 0.8s forwards;
+    }
+    @keyframes goi5di {
+      0% {transform: translateX(50px); opacity: 0;}
+      50% {transform: translateX(-50px); opacity: 1;}
+      100% {transform: translateX(0); opacity: 1;}
+    }
+    #dgBox nav {
+      border: 1px solid #06D6A0;
+      text-align: center;
+      height: 4rem;
+      background: #06D6A0;
+    }
+    #dgBox {
+      text-align: center;
+    }
+    #dgBox select {
+      height: 2rem;
+      width: 10rem;
+      margin: 10px 0;
+      border-radius: 10px;
+      margin: 20px;
+      border: 1px solid #FFF77E;
+      background: #FFF77E;
+      opacity: 0;
+      transition: 0.5s ease;
+      animation: selecmo 0.7s ease 0.7s forwards;
+    }
+    @keyframes selecmo {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    #dgBox select:hover {
+      background: #00FFBD;
+      border: 1px solid #00FFBD;
+      transform: scale(1.1);
+    }
+    #dgBox .nut4 {
+      height: 2rem;
+      width: 6rem;
+      margin-top: 10px;
+      border: 1px solid #00DAA2;
+      border-radius: 10px;
+      background: #00DAA2;
+      opacity: 0;
+      transition: 0.5s ease;
+      animation: nutmo 0.7s ease 1s forwards;
+    }
+    @keyframes nutmo {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    #dgBox .nut4:hover {
+      background: white;
+      transform: scale(1.2);
+      border: 1px solid white;
+      
+    }
+    #dgBox input {
+      height: 2rem;
+      width: 15rem;
+      border: 1px solid white;
+      border-radius: 10px;
+      background: white;
+      margin: 10px;
+      transition: 0.5s ease;
+      opacity: 0;
+      animation: vungVbcmo 0.7s ease 1.9s forwards;
+    }
+    @keyframes vungVbcmo {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    #dgBox input:hover {
+      background: #00FFBD;
+      border: 1px solid #00FFBD;
+      transform: scale(1.1);
+    }
+    #dgBox #nhapDg {
+      height: 2rem;
+      width: 13rem;
+      border: 1px solid #00DEA5;
+      border-radius: 10px;
+      margin-top: 40px;
+      background: white;
+      color: #B1B1B1;
+      opacity: 0;
+      transition: 0.5s ease;
+      animation: nhapDgmo 0.7s ease 0.5s forwards;
+    }
+    @keyframes nhapDgmo {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    #dgBox #nhapDg:hover {
+      background: #00FFBD;
+      border: 1px solid #00FFBD;
+      transform: scale(1.1);
+    }
+    #dgBox h4 {
+      opacity: 0;
+      font-size: 1.3rem;
+      animation: h4modi 0.7s ease 1.5s forwards;
+    }
+    @keyframes h4modi {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    #dgBox #vungVBc {
+      border: 1px solid #03A67C;
+      margin-top: 200px;
+      height: 17rem;
+      background: #03A67C;
+    }
+    
+    .nutDoiTrang {
+      height: 2.5rem;
+      margin: 10px 0 0 15px;
+      border: 1px solid #22B28C;
+      border-radius: 10px;
+      background: #22B28C;
+      color: white;
+      box-shadow: 
+      0 0 10px #57EBC5,
+      0 0 15px #4AFFD1;
+      transition: 0.5s ease;
+      animation: nutBuNho 2s ease infinite;
+    }
+    @keyframes nutBuNho {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.1);}
+      100% {transform: scale(1);}
+    }
+    .nutDoiTrang:hover {
+      background: #41957F;
+      border: 1px solid #41957F;
+    }
+    
+    #HTMLbox {
+      text-align: center;
+    }
+    #HTMLbox h1 {
+      background: #00C491;
+      height: 2.5rem;
+    }
+    #HTMLbox ul {
+      margin-right: 50px;
+      font-size: 1.1rem;
+      border: 1px solid #00D69C9E;
+      background: #00D69C9E;
+      text-align: center;
+      width: 20rem;
+      transition: 0.5s ease;
+    }
+    #HTMLbox ul:hover {
+      color: #771C1C;
+    }
+    #HTMLbox #nutHTML {
+      height: 2rem;
+      width: 7rem;
+      border: 1px solid #1DDBAA;
+      border-radius: 10px;
+      background: #1DDBAA;
+      transition: 0.5s ease;
+    }
+    #HTMLbox #nutHTML:hover {
+      transform: scale(1.2);
+      background: #24B690;
+      border: 1px solid #24B690;
+      color: white;
+    }
+    
+    #HTMLbox #nutQlHTML {
+      height: 2rem;
+      width: 7rem;
+      border: 1px solid #1DDBAA;
+      border-radius: 10px;
+      background: #1DDBAA;
+      transition: 0.5s ease;
+    }
+    #HTMLbox #nutQlHTML:hover {
+      transform: scale(1.2);
+      background: #24B690;
+      border: 1px solid #24B690;
+      color: white;
+    }
+    #HTMLbox #chuHtml {
+      color: #00C791;
+    }
+    li {
+      list-style: none;
+    }
+    #CSSbox {
+      text-align: center;
+    }
+    #CSSbox h1 {
+      background: #00C491;
+      height: 2.5rem;
+    }
+    #CSSbox ul {
+      margin-right: 50px;
+      margin-right: 50px;
+      font-size: 1.1rem;
+      border: 1px solid #00D69C9E;
+      background: #00D69C9E;
+      text-align: center;
+      width: 20rem;
+      transition: 0.5s ease;
+    }
+    #CSSbox ul:hover {
+      color: #771C1C;
+    }
+    #CSSbox #nutCSS {
+      height: 2rem;
+      width: 7rem;
+      border: 1px solid #1DDBAA;
+      border-radius: 10px;
+      background: #1DDBAA;
+      transition: 0.5s ease;
+    }
+    
+    
+    #CSSbox #nutQlCSS {
+      height: 2rem;
+      width: 7rem;
+      border: 1px solid #1DDBAA;
+      border-radius: 10px;
+      background: #1DDBAA;
+      transition: 0.5s ease;
+    }
+    #CSSbox #nutQlCSS:hover {
+      transform: scale(1.2);
+      background: #24B690;
+      border: 1px solid #24B690;
+      color: white;
+    }
+    #CSSbox #nutCSS:hover {
+      transform: scale(1.2);
+      background: #24B690;
+      border: 1px solid #24B690;
+      color: white;
+    }
+    #CSSbox #chuCss {
+      color: #00C791;
+    }
+    #JSbox {
+      text-align: center;
+    }
+    #JSbox h1 {
+      background: #00C491;
+      height: 2.5rem;
+    }
+    #JSbox ul {
+      margin-right: 50px;
+      font-size: 1.1rem;
+      border: 1px solid #00D69C9E;
+      background: #00D69C9E;
+      text-align: center;
+      width: 20rem;
+      transition: 0.5s ease;
+    }
+    #JSbox ul:hover {
+      color: #771C1C;
+    }
+    #JSbox #nutJS {
+      height: 2rem;
+      width: 7rem;
+      border: 1px solid #1DDBAA;
+      border-radius: 10px;
+      background: #1DDBAA;
+      transition: 0.5s ease;
+    }
+    #JSbox #nutJS:hover {
+      transform: scale(1.2);
+      background: #24B690;
+      border: 1px solid #24B690;
+      color: white;
+    }
+    
+    #JSbox #nutQlJS {
+      height: 2rem;
+      width: 7rem;
+      border: 1px solid #1DDBAA;
+      border-radius: 10px;
+      background: #1DDBAA;
+      transition: 0.5s ease;
+    }
+    #JSbox #nutQlJS:hover {
+      transform: scale(1.2);
+      background: #24B690;
+      border: 1px solid #24B690;
+      color: white;
+    }
+    #JSbox #chuJs {
+      color: #00C791;
+    }
+  </style>
+</head>
+
+<body>
+  
+  <div id="loginBox" class="scene active">
+    <h2>Đăng nhập</h2>
+    <input id="nhapTen" type="text"/>
+    <p id="chuTen">Nhập tên </p>
+    <input id="nhapMk" type="text">
+    <p id="chuMk">Nhập mật khẩu</p>
+    <input id="xnNhapMk" type="text">
+    <p id="chuXnMk">Xác nhận mật khẩu</p>
+    <button id="nutXn1" onclick="dichChuyen('phu')">Xác nhận </button><br>
+    <button id="nutQmk" onclick="doiTrang('qmkBox')">Quên mật khẩu?</button><br>
+    <button id="nutDk" onclick="doiTrang('dkBox')">Không có tài khoản?</button>
+  </div>
+  
+  <div id="qmkBox" class="scene">
+    <h2>Tạo mật khẩu mới</h2>
+    <input id="nhapTenMkm" type="text">
+    <p id="chuTenMkm">Nhập tên tài khoản</p>
+    <input id="nhapMkm" type="text">
+    <p id="chuMkm">Nhập mật khẩu mới</p>
+    <input id="xnNhapMkm" type="text">
+    <p id="chuXnMkm">Xác nhận mật khẩu mới</p>
+    <p id="nn1">Sau khi tạo sẽ tự động đăng nhập</p>
+    <button id="nutXn2" onclick="dichChuyen('phu')">Xác nhận </button><br>
+    <button id="nutQl1" onclick="doiTrang('loginBox')">Quay lại</button>
+  </div>
+    
+    <div id="dkBox" class="scene">
+      <h2>Tạo tài khoản</h2>
+      <input id="nhapTenDk" type="text">
+    <p id="chuTenDk">Nhập tên </p>
+    <input id="nhapMkDk" type="text">
+    <p id="chuMkDk">Nhập mật khẩu</p>
+    <input id="xnNhapMkDk" type="text">
+    <p id="chuXnMkDk">Xác nhận mật khẩu</p>
+    <button id="nutXn3" onclick="dichChuyen('phu')">Xác nhận </button><br>
+    <button id="nutQl2" onclick="doiTrang('loginBox')">Quay lại</button>
+    </div>
+    
+    <div id="phu" class="scene">
+      <button id="nutPhu" onclick="dichChuyenReal('menu')">Đã thành công bấm để tiếp tục </button>
+    </div>
+    
+    <!--Phần menu chính-->
+    <div id="menu" class="scene">
+      <nav>
+        <button class="nutDoiTrang" onclick="doiTrang('menu')">Trang chủ </button>
+        <button class="nutDoiTrang" onclick="doiTrang('dkHocBox')">Đăng kí gói</button>
+        <button class="nutDoiTrang" onclick="doiTrang('muaXuBox')">Mua xu</button>
+        <button class="nutDoiTrang" onclick="doiTrang('dgBox')">Đánh giá</button>
+      </nav>
+      <p id="ten"></p>
+      <main>
+      <h1 id="chu1" class="chu1">Trang chủ</h1>
+      <h1 id="chu2" class="chu2">Giới thiệu</h1>
+      <div id="chuTrongMenu">
+      <p id="chuTrongMenuMenu">Đây là web giúp bạn học lập trình. Ở đây, hiện tại chỉ có 3 ngôn ngữ dành cho làm web đó là: HTML, CSS,và JavaScript. Trong tương lai sẽ có nhiều ngôn ngữ hơn, mong mọi người ủng hộ.</p>
+      </div>
+      </main>
+      
+      <footer>
+        <h3>Liên hệ</h3>
+        <p>SĐT: 0987654321</p>
+        <p>Email: abcd@gmail.com</p>
+      </footer>
+    </div>
+    
+    <div id="dkHocBox" class="scene">
+      <nav>
+        <button class="nutDoiTrang" onclick="doiTrang('menu')">Trang chủ </button>
+        <button class="nutDoiTrang" onclick="doiTrang('dkHocBox')">Đăng kí gói</button>
+        <button class="nutDoiTrang" onclick="doiTrang('muaXuBox')">Mua xu</button>
+        <button class="nutDoiTrang" onclick="doiTrang('dgBox')">Đánh giá</button>
+      </nav>
+      <h1>Chọn gói bạn muốn mua</h1>
+     <div id="soXubox">
+      <span>Số xu:</span> <span id="soTien">0</span></div>
+      <button id="nutHTML" class="nut2" onclick="doiTrang('HTMLbox')">HTML</button><br>
+      <button id="nutCSS" class="nut2" onclick="doiTrang('CSSbox')">CSS</button><br>
+      <button id="nutJS" class="nut2" onclick="doiTrang('JSbox')">JAVASCRIPT</button>
+      <p>Mỗi khoá học sẽ có 1 mức giá khác nhau và bài học khác nhau</p>
+      <div id="luilai">
+      <p>Nhập email của bạn vào đây để có thể nhận được bài học của chúng tôi:</p>
+      <input id="nhapEmail" type="email"><br>
+      <button id="nutGuiEmail" onclick="guiEmail()">Gửi</button><br>
+      <p id="chuEmail"></p>
+      </div>
+      
+
+    </div>
+    
+    <div id="HTMLbox" class="scene">
+      <h1>HTML</h1>
+      <button id="nutHTML" onclick="muaHtml()">100 xu</button>
+      <p id="chuHtml"></p>
+      <p>Sau khi mua chúng tôi sẽ gửi cho bạn các email dạy cho bạn về HTML như:</p>
+      <ul>
+        <li>- Các thẻ thường dùng và công dụng của chúng</li>
+        <li>- Cách đặt class,id cho thẻ</li>
+        <li>- Cách kết nối với CSS và JavaScript</li>
+        <li>- Cách phân chia các phần trong web</li>
+        <li>...</li>
+      </ul>
+      <button id="nutQlHTML" onclick="doiTrang('dkHocBox')">Quay lại</button>
+    </div>
+    
+    <div id="CSSbox" class="scene">
+      <h1>CSS</h1>
+      <button id="nutCSS" onclick="muaCss()">200 xu</button>
+      <p id="chuCss"></p>
+      <p>Sau khi mua chúng tôi sẽ gửi các email dạy CSS cho bạn như:</p>
+      <ul>
+        <li>- Cách đổi màu chữ,nền, viền,khung</li>
+        <li>- Cách điều chỉnh vị trí của các thẻ trong HTML</li>
+        <li>- Cách điều chỉnh kích thước</li>
+        <li>- Cách làm tương tác khi di chuột vào</li>
+        <li>- Cách làm animation</li>
+        <li>...</li>
+      </ul>
+      <button id="nutQlCSS" onclick="doiTrang('dkHocBox')">Quay lại</button>
+    </div>
+    
+    <div id="JSbox" class="scene">
+      <h1>JAVASCRIPT</h1>
+      <button id="nutJS" onclick="muaJs()">300 xu</button>
+      <p id="chuJs"></p>
+      <p>Sau khi mua chúng tôi sẽ gửi các email dạy cho bạn về JavaScript như:</p>
+      <ul>
+        <li>- Cách khai báo biến</li>
+        <li>- Giới thiệu các kiểi dữ liệu</li>
+        <li>- Cách chỉnh sửa HTML và CSS</li>
+        <li>- Cách sử dụng hàm và gọi hàm</li>
+        <li>- Cách xử lí điều kiện</li>
+        <li>- Cách sử dụng DOM</li>
+        <li>- Cách thêm event</li>
+        <li>...</li>
+      </ul>
+      <button id="nutQlJS" onclick="doiTrang('dkHocBox')">Quay lại</button>
+    </div>
+    
+    <div id="muaXuBox" class="scene">
+      <nav>
+        <button class="nutDoiTrang" onclick="doiTrang('menu')">Trang chủ </button>
+        <button class="nutDoiTrang" onclick="doiTrang('dkHocBox')">Đăng kí gói</button>
+        <button class="nutDoiTrang" onclick="doiTrang('muaXuBox')">Mua xu</button>
+        <button class="nutDoiTrang" onclick="doiTrang('dgBox')">Đánh giá</button>
+      </nav>
+      <h2>Chọn số xu bạn muốn mua</h2>
+      <div id="goi1">
+        10 xu
+      </div>
+      <button class="nut3" onclick="mua10()">5.000₫</button>
+      
+      <div id="goi2">
+        25 xu
+      </div>
+      <button class="nut3" onclick="mua25()">12.500₫</button>
+      
+      <div id="goi3">
+        50 xu
+      </div>
+      <button class="nut3" onclick="mua50()">25.000₫</button>
+      
+      <div id="goi4">
+        100 xu
+      </div>
+      <button class="nut3" onclick="mua100()">50.000₫</button>
+      
+      <div id="goi5">
+        200 xu
+      </div>
+      <button class="nut3" onclick="mua200()">100.000₫</button>
+    </div>
+    
+    <div id="dgBox" class="scene">
+      <nav>
+        <button class="nutDoiTrang" onclick="doiTrang('menu')">Trang chủ </button>
+        <button class="nutDoiTrang" onclick="doiTrang('dkHocBox')">Đăng kí gói</button>
+        <button class="nutDoiTrang" onclick="doiTrang('muaXuBox')">Mua xu</button>
+        <button class="nutDoiTrang" onclick="doiTrang('dgBox')">Đánh giá</button>
+      </nav>
+      <input id="nhapDg" type="text" placeholder="Nhập đánh giá của bạn tại đây"> <br>
+      <select>
+        <option>1 sao</option>
+        <option>2 sao</option>
+        <option>3 sao</option>
+        <option>4 sao</option>
+        <option>5 sao</option>
+      </select><br>
+      <button class="nut4" onclick="guiDg()">Gửi</button>
+      <p id="chuDg"></p>
+      <div id="vungVBc">
+      <h4>Bạn có thể viết báo cáo ở đây</h4>
+      <input id="nhapBC" type="text" placeholder="Nhập"><br>
+      <button class="nut4" onclick="guiBC()">Gửi</button>
+      <p id="chuBC"></p>
+      </div>
+    </div>
+    
+
+
+    <script>
+    
+  //Phần script cho login
+  function dichChuyen(phu) {
+    
+    let nhapTen = document.getElementById("nhapTen").value;
+    let nhapTenMkm = document.getElementById("nhapTenMkm").value;
+    let nhapTenDk = document.getElementById("nhapTenDk").value;
+    
+
+  
+    let nhapMk = document.getElementById("nhapMk").value;
+    let nhapMkm = document.getElementById("nhapMkm").value;
+    let nhapMkDk = document.getElementById("nhapMkDk").value;
+    
+    let xnNhapMk = document.getElementById("xnNhapMk").value;
+    let xnNhapMkm = document.getElementById("xnNhapMkm").value;
+    let xnNhapMkDk = document.getElementById('xnNhapMkDk').value;
+  
+    let chuTen1 = document.getElementById("chuTen");
+  let chuMk1 = document.getElementById("chuMk");
+  let chuXnMk1 = document.getElementById("chuXnMk");
+  
+  let chuTenDk = document.getElementById("chuTenDk");
+  let chuMkDk = document.getElementById("chuMkDk");
+  let chuXnMkDk = document.getElementById("chuXnMkDk");
+  
+  let chuTenMkm = document.getElementById("chuTenMkm");
+  let chuMkm = document.getElementById("chuMkm");
+  let chuXnMkm = document.getElementById("chuXnMkm");
+  
+  let ten = document.getElementById('ten');
+
+  
+    if (nhapTen === "" && nhapMk === "") {
+      chuTen1.textContent = "Vui lòng nhập tên";
+      chuMk1.textContent = "Vui lòng nhập mật khẩu";
+      chuTen1.style.color = "red";
+      chuMk1.style.color = "red";
+      chuTen1.style.fontWeight = "bold";
+      chuMk1.style.fontWeight = "bold";
+    }
+     else if (nhapTen === "") {
+      chuTen1.textContent = "Vui lòng nhập tên";
+      chuTen1.style.color = "red";
+      chuTen1.style.fontWeight = "bold";
+    }
+    else if (nhapMk === "") {
+      chuMk1.textContent = "Vui lòng nhập mật khẩu ";
+      chuMk1.style.color = "red";
+      chuMk1.style.fontWeight = "bold";
+    } else if (xnNhapMk !== nhapMk
+    ) {
+      chuXnMk1.textContent = "Mật khẩu xác nhận sai"
+      chuXnMk1.style.color = "red";
+      chuXnMk1.style.fontWeight = "bold";
+    }
+    else {
+      document.body.style.backgroundColor = "#F8FFE5";
+      document.querySelectorAll('.scene').forEach(scene => {
+            scene.classList.remove('active');
+          });
+          document.getElementById('phu').classList.add('active');
+      }
+      
+      if (nhapTenDk === "" && nhapMkDk === "") {
+      chuTenDk.textContent = "Vui lòng nhập tên";
+      chuMkDk.textContent = "Vui lòng nhập mật khẩu";
+      chuTenDk.style.color = "red";
+      chuMkDk.style.color = "red";
+      chuTenDk.style.fontWeight = "bold";
+      chuMkDk.style.fontWeight = "bold";
+    }
+     else if (nhapTenDk === "") {
+      chuTenDk.textContent = "Vui lòng nhập tên";
+      chuTenDk.style.color = "red";
+      chuTenDk.style.fontWeight = "bold";
+    }
+    else if (nhapMkDk === "") {
+      chuMkDk.textContent = "Vui lòng nhập mật khẩu ";
+      chuMkDk.style.color = "red";
+      chuXnDk.style.fontWeight = "bold";
+    }
+    else if (xnNhapMkDk !== nhapMkDk) {
+      chuXnMkDk.textContent = "Mật khẩu xác nhận sai";
+      chuXnMkDk.style.color = "red";
+      chuXnMkDk.style.fontWeight = "bold";
+    } else {
+      document.body.style.backgroundColor = "#F8FFE5";
+      document.querySelectorAll('.scene').forEach(scene => {
+            scene.classList.remove('active');
+          });
+          document.getElementById('phu').classList.add('active');
+    }
+    
+    if (nhapTenMkm === "" && nhapMkm === "") {
+      chuTenMkm.textContent = "Vui lòng nhập tên";
+      chuMkm.textContent = "Vui lòng nhập mật khẩu";
+      chuTenMkm.style.color = "red";
+      chuMkm.style.color = "red";
+      chuTenMkm.style.fontWeight = "bold";
+      chuMkm.style.fontWeight = "bold";
+    }
+     else if (nhapTenMkm === "") {
+      chuTenMkm.textContent = "Vui lòng nhập tên";
+      chuTenMkm.style.color = "red";
+      chuTenMkm.style.fontWeight = "bold";
+    }
+    else if (nhapMkm === "") {
+      chuMkm.textContent = "Vui lòng nhập mật khẩu ";
+      chuMkm.style.color = "red";
+      chuMkm.style.fontWeight = "bold";
+    } else if (xnNhapMkm !== nhapMkm) {
+      chuXnMkm.textContent = "Mật khẩu xác nhận sai";
+      chuXnMkm.style.color = "red";
+      chuXnMkm.style.fontWeight = "bold";
+    } else {
+      document.body.style.backgroundColor = "#F8FFE5";
+      document.querySelectorAll('.scene').forEach(scene => {
+            scene.classList.remove('active');
+          });
+          document.getElementById('phu').classList.add('active');
+    }
+    
+    
+    if (nhapTenDk === "" && nhapTenMkm === "") {
+      ten.textContent = nhapTen;
+    } else if (nhapTen === "" && nhapTenDk === "") {
+      ten.textContent = nhapTenMkm;
+    } else if (nhapTen === "" && nhapTenMkm === "") {
+      ten.textContent = nhapTenDk;
+    }
+  }
+  
+  
+  function dichChuyenReal(menu) {
+    document.querySelectorAll('.scene').forEach(scene => {
+            scene.classList.remove('active');
+          });
+          document.getElementById('menu').classList.add('active');
+  }
+      function doiTrang(id) {
+          document.querySelectorAll('.scene').forEach(scene => {
+            scene.classList.remove('active');
+          });
+          document.getElementById(id).classList.add('active')
+      }
+      
+      //Phần script cho menu chính
+  function taoMayDem1() {
+    let x = 0;
+    return function demLan1() {
+      x += 10;
+      document.getElementById("soTien").textContent = x;
+    }
+  }
+  const hien1 = taoMayDem1();
+  function mua10() {
+    hien1();
+  }
+  
+  function taoMayDem2() {
+    let x = 0;
+    return function demLan2() {
+      x += 25;
+      document.getElementById("soTien").textContent = x;
+    }
+  }
+  const hien2 = taoMayDem2();
+  function mua25() {
+    hien2();
+  }
+  
+  function taoMayDem3() {
+    let x = 0;
+    return function demLan3() {
+      x += 50;
+      document.getElementById("soTien").textContent = x;
+    }
+  }
+  const hien3 = taoMayDem3();
+  function mua50() {
+    hien3();
+  }
+  
+  function taoMayDem4() {
+    let x = 0;
+    return function demLan4() {
+      x += 100;
+      document.getElementById("soTien").textContent = x;
+    }
+  }
+  const hien4 = taoMayDem4();
+  function mua100() {
+    hien4();
+  }
+  
+  function taoMayDem5() {
+    let x = 0;
+    return function demLan5() {
+      x += 200;
+      document.getElementById("soTien").textContent = x;
+    }
+  }
+  const hien5 = taoMayDem5();
+  function mua200() {
+    hien5();
+  }
+  
+  function guiDg() {
+    let chuDg = document.getElementById("chuDg");
+    chuDg.textContent = "Cảm ơn bạn đã đánh giá"
+  }
+  
+  function guiBC() {
+    let nhapBC = document.getElementById("nhapBC").value;
+    let chuBC = document.getElementById("chuBC");
+    
+    if (nhapBC === "") {
+      chuBC.textContent = "Vui lòng nhập"
+    } else {
+      chuBC.textContent = "Cảm ơn bạn vì đã báo cáo, chúng tôi sẽ cố gắn khắc phục "
+    }
+  }
+  function guiEmail() {
+    let nhapEmail = document.getElementById("nhapEmail").value;
+    let chuEmail = document.getElementById("chuEmail");
+    
+    if (nhapEmail === "") {
+      chuEmail.textContent = "Vui lòng nhập email";
+    } else {
+      chuEmail.textContent = "Cảm ơn bạn đã nhập"
+    }
+  }
+  
+  function muaHtml() {
+    let chuHtml = document.getElementById("chuHtml");
+    let soTien = +document.getElementById("soTien").textContent;
+    let nhapEmail = document.getElementById("nhapEmail").value;
+    if (soTien < 100) {
+      chuHtml.textContent = "Bạn thiếu xu, hãy mua thêm!";
+    } else if (nhapEmail === "") {
+      chuHtml.textContent = "Bạn chưa nhập email,hãy nhập để nhận được bài học!"
+    }
+    else {
+      chuHtml.textContent = "Cảm ơn vì đã mua, chúng tôi sẽ sớm gửi các bài học cho bạn!";
+    }
+  }
+  function muaCss() {
+    let chuCs = document.getElementById("chuCss");
+    let soTien = +document.getElementById("soTien").textContent;
+    let nhapEmail = document.getElementById("nhapEmail").value;
+    if (soTien < 200) {
+      chuCss.textContent = "Bạn thiếu xu, hãy mua thêm!";
+    } else if (nhapEmail === "") {
+      chuCss.textContent = "Bạn chưa nhập email,hãy nhập để nhận được bài học!"
+    }
+    else {
+      chuCss.textContent = "Cảm ơn vì đã mua, chúng tôi sẽ sớm gửi các bài học cho bạn!";
+    }
+  }
+  function muaJs() {
+    let chuJs = document.getElementById("chuJs");
+    let x = parseInt(document.getElementById("soTien").textContent);
+    let nhapEmail = document.getElementById("nhapEmail").value;
+    if (x < 300) {
+      chuJs.textContent = "Bạn thiếu xu! Hãy mua thêm";
+    } else if (nhapEmail === "") {
+      chuJs.textContent = "Bạn chưa nhập email,hãy nhập để nhận được bài học!"
+    }
+    else {
+      chuJs.textContent = "Cảm ơn vì đã mua, Chúng tôi sẽ sớm gửi các bài học cho bạn!";
+    }
+  }
+    </script>
+</body>
+
+</html>
